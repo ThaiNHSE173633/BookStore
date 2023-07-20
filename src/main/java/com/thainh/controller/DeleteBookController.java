@@ -10,6 +10,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
 import javax.naming.NamingException;
 public class DeleteBookController extends HttpServlet {
@@ -24,6 +25,8 @@ public class DeleteBookController extends HttpServlet {
             BookDAO dao = new BookDAO();
             boolean result = dao.deleteRecord(id);
             if (result) {
+                HttpSession session = request.getSession(false);
+                session.setAttribute("success", "Deleted book successfully!");
                 urlRewrite = "Admin/bookManage.jsp";
             }
         } catch (NamingException | SQLException ex) {

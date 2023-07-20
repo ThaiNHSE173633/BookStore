@@ -12,6 +12,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
 import javax.naming.NamingException;
 
@@ -33,16 +34,18 @@ public class DeleteCategoryController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String urlRewrite = DELETEERROR;
+        String urlRewrite = "Admin/categoryManage.jsp";
+        HttpSession session = request.getSession(false);
         try {
             /* TODO output your page here. You may use following sample code. */
             int id = Integer.parseInt(request.getParameter("pk"));
             BookCategoryDAO dao = new BookCategoryDAO();
             boolean result = dao.deleteRecord(id);
             if (result) {
-                urlRewrite = "Admin/categoryManage.jsp";
+                session.setAttribute("success", "Deleted category successfully!");
             }
         } catch (NamingException | SQLException ex) {
+            session.setAttribute("error", "There are books with this category!");
             ex.printStackTrace();
         } finally {
             response.sendRedirect(urlRewrite);

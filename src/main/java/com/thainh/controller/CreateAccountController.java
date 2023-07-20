@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import com.thainh.registration.RegistrationDAO;
 import com.thainh.registration.RegistrationInsertError;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -66,7 +67,8 @@ public class CreateAccountController extends HttpServlet {
             } else {
                 boolean result = dao.insertRecord(username, password, fullname, false);
                 if (result) {
-                    request.setAttribute("success", "Successfully created account!");
+                    HttpSession session = request.getSession(false);
+                    session.setAttribute("success", "Created account successfully!");
                     urlRewrite = LOGINPAGE;
                 }
             }

@@ -12,6 +12,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -30,7 +31,10 @@ public class CreateCategoryController extends HttpServlet {
             {
                 result = dao.insertRecord(name);
                 if(result)
-                    request.setAttribute("success", "Successfully created category!");
+                {
+                    HttpSession session = request.getSession(false);
+                    session.setAttribute("success", "Created category successfully!");
+                }
             }
             if (result) {
                 urlRewrite = "Admin/categoryManage.jsp";

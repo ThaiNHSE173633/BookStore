@@ -40,7 +40,7 @@
                 List<BookDTO> result = (List<BookDTO>) request.getAttribute("SEARCHRESULT");
                 if (result != null) {
                 %>
-                <div class="row d-flex flex-row justify-content-around">
+                <div class="row">
                     <%for(BookDTO item:result){%>
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
                         <div class="card" style="width: 18rem">
@@ -56,11 +56,13 @@
                                     if(user!=null)
                                     {
                                 %>
-                                <form action="MainController">
-                                    <button class="btn btn-success add-button" type='button' data-id="<%=item.getId()%>">
-                                        Add to Cart
-                                    </button>
-                                </form>
+                                <div class="row d-flex justify-content-around">
+                                    <form action="MainController" class="d-flex justify-content-around">
+                                        <button class="btn btn-success add-button" type='button' data-id="<%=item.getId()%>">
+                                            Add to Cart
+                                        </button>
+                                    </form>
+                                </div>
                                 <%
                                     }
                                 %>

@@ -45,7 +45,7 @@ public class UpdateOrderController extends HttpServlet {
                 if(result)
                 {
                     HttpSession session = request.getSession(false);
-                    session.setAttribute("success", "Successfully updated order!");
+                    session.setAttribute("success", "Updated order successfully!");
                 }
             }
             if (result) {

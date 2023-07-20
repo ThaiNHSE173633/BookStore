@@ -1,54 +1,32 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package com.thainh.controller;
 
+import com.thainh.order.OrderDAO;
 import java.io.IOException;
-import java.sql.SQLException;
-import javax.naming.NamingException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import com.thainh.registration.RegistrationDAO;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpSession;
+import java.sql.SQLException;
+import javax.naming.NamingException;
 
-/**
- *
- * @author DELL
- */
-public class UpdateUserController extends HttpServlet {
-
-    private final String UPDATEERRPAGE = "updateErr.html";
-
+public class CancelOrderController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String urlRewrite = UPDATEERRPAGE;
+        String urlRewrite = "userOrders.jsp";
         try {
-            String username = request.getParameter("txtUsername").trim();
-            String password = request.getParameter("txtPassword").trim();
-            String admin = request.getParameter("chkRole");
-            boolean role = false;
-            if (admin != null) {
-                role = true;
-            }
-            RegistrationDAO dao = new RegistrationDAO();
-            boolean result = true;
-            if(!username.isBlank() && !password.isBlank())
-            {
-                result = dao.updatePassRole(username, password, role);
-                if(result)
-                if(result)
-                {
-                    HttpSession session = request.getSession(false);
-                    session.setAttribute("success", "Updated user successfully!");
-                }
-            }
+            /* TODO output your page here. You may use following sample code. */
+            int id = Integer.parseInt(request.getParameter("pk"));
+            OrderDAO dao = new OrderDAO();
+            boolean result = dao.deleteRecord(id);
             if (result) {
-                urlRewrite = "Admin/userManage.jsp";
+                HttpSession session = request.getSession(false);
+                session.setAttribute("success", "Cancel order successfully!");
             }
         } catch (NamingException | SQLException ex) {
             ex.printStackTrace();

@@ -10,6 +10,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
 import javax.naming.NamingException;
 
@@ -45,7 +46,10 @@ public class CreateBookController extends HttpServlet {
             {
                 result = dao.insertRecord(title, imgPath, price, inStock, categoryId, author);
                 if(result)
-                    request.setAttribute("success", "Successfully created book!");
+                {
+                    HttpSession session = request.getSession(false);
+                    session.setAttribute("success", "Created book successfully!");
+                }
             }
             if (result) {
                 urlRewrite = "Admin/bookManage.jsp";

@@ -36,7 +36,7 @@ public class UpdateCategoryController extends HttpServlet {
                 if(result)
                 {
                     HttpSession session = request.getSession(false);
-                    session.setAttribute("success", "Successfully updated category!");
+                    session.setAttribute("success", "Updated category successfully!");
                 }
             }
             if (result) {

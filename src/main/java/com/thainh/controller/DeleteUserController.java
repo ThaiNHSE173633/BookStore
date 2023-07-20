@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import com.thainh.registration.RegistrationDAO;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -21,16 +22,6 @@ import com.thainh.registration.RegistrationDAO;
 public class DeleteUserController extends HttpServlet {
 
     private final String DELETEERROR = "deleteErr.html";
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String urlRewrite = DELETEERROR;
@@ -40,6 +31,8 @@ public class DeleteUserController extends HttpServlet {
             RegistrationDAO dao = new RegistrationDAO();
             boolean result = dao.deleteRecord(id);
             if (result) {
+                HttpSession session = request.getSession(false);
+                session.setAttribute("success", "Deleted user successfully!");
                 urlRewrite = "Admin/userManage.jsp";
             }
         } catch (NamingException | SQLException ex) {

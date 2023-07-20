@@ -11,6 +11,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
 import javax.naming.NamingException;
 
@@ -30,6 +31,8 @@ public class DeleteOrderController extends HttpServlet {
             OrderDAO dao = new OrderDAO();
             boolean result = dao.deleteRecord(id);
             if (result) {
+                HttpSession session = request.getSession(false);
+                session.setAttribute("success", "Deleted category successfully!");
                 urlRewrite = "Admin/orderManage.jsp";
             }
         } catch (NamingException | SQLException ex) {

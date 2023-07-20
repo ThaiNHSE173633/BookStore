@@ -45,6 +45,7 @@ public class RemoveItemController extends HttpServlet {
                         cart.removeItemFromCart(id);
                     }
                     session.setAttribute("CART", cart);
+                    session.setAttribute("success", "Remove books successfully!");
                 }
 
             }

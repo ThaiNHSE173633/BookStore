@@ -26,6 +26,7 @@ public class MainController extends HttpServlet {
     private final String USERORDERPAGE = "userOrders.jsp";
     private final String VIEWUSERORDERDETAILSCONTROLLER = "ViewUserOrderDetailsController";
     private final String ORDERCONTROLLER = "OrderController";
+    private final String CANCELORDERCONTROLLER = "CancelOrderController";
     private final String UPDATEORDERCONTROLLER = "UpdateOrderController";
     private final String DELETEORDERCONTROLLER = "DeleteOrderController";
     private final String VIEWORDERDETAILCONTROLLER = "ViewOrderDetailController";
@@ -102,6 +103,9 @@ public class MainController extends HttpServlet {
                     break;
                 case "Order Details":
                     url = VIEWORDERDETAILCONTROLLER;
+                    break;
+                case "CancelOrder":
+                    url = CANCELORDERCONTROLLER;
                     break;
                 case "DeleteOrder":
                     url = DELETEORDERCONTROLLER;

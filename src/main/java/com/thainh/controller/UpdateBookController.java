@@ -46,7 +46,7 @@ public class UpdateBookController extends HttpServlet {
                 if(result)
                 {
                     HttpSession session = request.getSession(false);
-                    session.setAttribute("success", "Successfully updated book!");
+                    session.setAttribute("success", "Updated book successfully!");
                 }
             }
             if (result) {

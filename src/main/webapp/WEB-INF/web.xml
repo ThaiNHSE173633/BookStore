@@ -124,6 +124,10 @@
         <servlet-name>ViewUserOrderDetailsController</servlet-name>
         <servlet-class>com.thainh.controller.ViewUserOrderDetailsController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CancelOrderController</servlet-name>
+        <servlet-class>com.thainh.controller.CancelOrderController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -239,6 +243,10 @@
     <servlet-mapping>
         <servlet-name>ViewUserOrderDetailsController</servlet-name>
         <url-pattern>/ViewUserOrderDetailsController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CancelOrderController</servlet-name>
+        <url-pattern>/CancelOrderController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
