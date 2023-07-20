@@ -29,6 +29,8 @@ public class CreateCategoryController extends HttpServlet {
             if(!name.isBlank())
             {
                 result = dao.insertRecord(name);
+                if(result)
+                    request.setAttribute("success", "Successfully created category!");
             }
             if (result) {
                 urlRewrite = "Admin/categoryManage.jsp";

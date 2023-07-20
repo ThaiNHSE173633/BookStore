@@ -36,8 +36,8 @@
                         <tr>
                             <th>Id</th>
                             <th style="width:300px">Title</th>
-                            <th>Image Path</th>
                             <th>Author</th>
+                            <th>Image</th>
                             <th>Price</th>
                             <th>In Stock</th>
                             <th>Category Name</th>

@@ -95,10 +95,10 @@
                         type: "POST",
                         data: { bookId: id},
                         success: function(response) {
-                            alert("Book added successfully!");
+                            toastr.success("Book added successfully!");
                         },
                         error: function(xhr) {
-                            alert("Error adding book to cart.");
+                            toastr.error("Error adding book to cart.");
                         }
                     });
                 });

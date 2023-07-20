@@ -9,7 +9,6 @@ import com.thainh.book.BookDTO;
 import com.thainh.cart.CartDTO;
 import com.thainh.order.OrderDAO;
 import com.thainh.registration.RegistrationDTO;
-import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -17,7 +16,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,7 +42,7 @@ public class OrderController extends HttpServlet {
             for (Map.Entry<BookDTO, Integer> item : items.entrySet()) {
                 if (item.getValue() > item.getKey().getInStock()) {
                     flag = true;
-                    request.setAttribute("OrderError", "Not Enough Stock for "+item.getKey().getTitle());
+                    session.setAttribute("error", "Not Enough Stock for "+item.getKey().getTitle()+"!");
                     break;
                 }
             }
@@ -58,6 +56,7 @@ public class OrderController extends HttpServlet {
                     cart = new CartDTO();
                     cart.setCustomerId(user.getId());
                     session.setAttribute("CART", cart);
+                    session.setAttribute("success", "Order successfully!");
                 }
             }
             urlRewrite = "viewCart.jsp";
@@ -66,8 +65,7 @@ public class OrderController extends HttpServlet {
         } catch (NamingException ex) {
             Logger.getLogger(OrderController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(urlRewrite);
-            rd.forward(request, response);
+            response.sendRedirect(urlRewrite);
         }
     }
 

@@ -6,7 +6,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-        <jsp:include page="/Shared/_Header.jsp" />
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Book Store</title>
@@ -15,6 +14,7 @@
 
     </head>
     <body>
+        <jsp:include page="/Shared/_Header.jsp" />
         <div class="container">
         <h1>Your Cart includes</h1>
         <%
@@ -86,12 +86,6 @@
                             <input class="btn btn-success" type="submit" value="Order" name="button">
                         </form>
                     </div>
-                            <%
-                                }
-                            String error=(String) request.getAttribute("OrderError");
-                            if(error!=null){
-                            %>
-                            <div class="text-danger"><%=error%></div>
                             <%
                                 }
                             %>

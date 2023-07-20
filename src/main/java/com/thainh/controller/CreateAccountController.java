@@ -66,6 +66,7 @@ public class CreateAccountController extends HttpServlet {
             } else {
                 boolean result = dao.insertRecord(username, password, fullname, false);
                 if (result) {
+                    request.setAttribute("success", "Successfully created account!");
                     urlRewrite = LOGINPAGE;
                 }
             }

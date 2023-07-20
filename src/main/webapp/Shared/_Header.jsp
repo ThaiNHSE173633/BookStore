@@ -1,5 +1,6 @@
 
 <%@page import="com.thainh.registration.RegistrationDTO"%>
+<jsp:include page="/Shared/_Notification.jsp" />
 <%
     String searchValue = request.getParameter("txtSearchValue");
     if(searchValue==null)
@@ -9,7 +10,9 @@
     RegistrationDTO user= (RegistrationDTO)session.getAttribute("user");
 %>
     <div style="width:100%;padding-left:15%">
+        <a href="index.jsp">
         <img style="width:30%;height:auto" src="img/logo.jpg" alt="logo"></img>
+        </a>
     </div>
     <div class="row bg-dark text-white px-4 py-2 mb-2">
         <form class="col-7" name="form" action="MainController" method="post">

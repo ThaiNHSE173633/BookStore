@@ -13,6 +13,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import com.thainh.registration.RegistrationDAO;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -38,6 +40,12 @@ public class UpdateUserController extends HttpServlet {
             if(!username.isBlank() && !password.isBlank())
             {
                 result = dao.updatePassRole(username, password, role);
+                if(result)
+                if(result)
+                {
+                    HttpSession session = request.getSession(false);
+                    session.setAttribute("success", "Successfully updated user!");
+                }
             }
             if (result) {
                 urlRewrite = "Admin/userManage.jsp";

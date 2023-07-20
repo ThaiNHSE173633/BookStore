@@ -44,6 +44,8 @@ public class CreateBookController extends HttpServlet {
             if(!title.isBlank() && !imgPath.isBlank() && price!=null && inStock!=null)
             {
                 result = dao.insertRecord(title, imgPath, price, inStock, categoryId, author);
+                if(result)
+                    request.setAttribute("success", "Successfully created book!");
             }
             if (result) {
                 urlRewrite = "Admin/bookManage.jsp";

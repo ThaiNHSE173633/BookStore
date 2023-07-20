@@ -5,20 +5,13 @@
 package com.thainh.controller;
 
 import com.thainh.book.BookDAO;
-import com.thainh.registration.RegistrationDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import javax.naming.NamingException;
-
-/**
- *
- * @author Windows
- */
 public class DeleteBookController extends HttpServlet {
     private final String DELETEERROR = "deleteErr.html";
 

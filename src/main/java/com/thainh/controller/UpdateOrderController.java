@@ -5,11 +5,13 @@
 package com.thainh.controller;
 
 import com.thainh.order.OrderDAO;
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
 import javax.naming.NamingException;
 
@@ -40,6 +42,11 @@ public class UpdateOrderController extends HttpServlet {
             if(total!=null)
             {
                 result = dao.updateRecord(id, total, isDone);
+                if(result)
+                {
+                    HttpSession session = request.getSession(false);
+                    session.setAttribute("success", "Successfully updated order!");
+                }
             }
             if (result) {
                 urlRewrite = "Admin/orderManage.jsp";

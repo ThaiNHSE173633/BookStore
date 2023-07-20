@@ -20,7 +20,7 @@ import javax.naming.NamingException;
  *
  * @author Windows
  */
-public class OrderDetailController extends HttpServlet {
+public class ViewOrderDetailController extends HttpServlet {
 
     private final String DETAILPAGE = "Admin/Order/Detail.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

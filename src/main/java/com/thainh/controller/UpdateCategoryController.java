@@ -6,11 +6,13 @@ package com.thainh.controller;
 
 import com.thainh.book.BookDAO;
 import com.thainh.bookcategory.BookCategoryDAO;
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
 import javax.naming.NamingException;
 
@@ -31,6 +33,11 @@ public class UpdateCategoryController extends HttpServlet {
             if(!name.isBlank())
             {
                 result = dao.updateRecord(id, name);
+                if(result)
+                {
+                    HttpSession session = request.getSession(false);
+                    session.setAttribute("success", "Successfully updated category!");
+                }
             }
             if (result) {
                 urlRewrite = "Admin/categoryManage.jsp";

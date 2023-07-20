@@ -1,4 +1,5 @@
 
+<jsp:include page="/Shared/_Notification.jsp" />
 <nav class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="position:fixed;width: 280px; height:100%" id="sidebar">
     <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         Dashboard

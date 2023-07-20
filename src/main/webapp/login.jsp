@@ -3,7 +3,7 @@
     Created on : 14 Jul 2023, 9:19:34 pm
     Author     : Windows
 --%>
-
+<jsp:include page="/Shared/_Notification.jsp" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
